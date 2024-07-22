@@ -1,5 +1,6 @@
 import sys
 import logging
+from src.logger import logging  # Import the configured logging
 
 def error_message_detail(error, error_detail: sys):
     _, _, exc_tb = error_detail.exc_info()
@@ -22,4 +23,4 @@ if __name__ == '__main__':
         a = 1/0
     except Exception as e:
         logging.error("Division by zero error occurred")
-        raise CustomException("Division by zero", sys) from e
+        raise CustomException("Division by zero", error_detail=sys) from e
